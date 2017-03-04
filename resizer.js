@@ -158,7 +158,7 @@ server.get("/imgs/pdf2svg/", function(req, res, next) {
     var url = req.query.url;
 
     if (url) {
-        var pdfToSvgConverter = new Inkscape(['--import-pdf --export-plain-svg']);
+        var pdfToSvgConverter = new Inkscape(['--import-pdf -l out.svg']);
 
         request.get(url)
             .on('response', function(response) {
