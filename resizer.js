@@ -78,6 +78,8 @@ server.use(restify.bodyParser());
 
 
 //Set Routes
+
+//  https://cklsylabs.com/imgs/resize?width=200&height=200&url=http%3A%2F%2Fwww.planwallpaper.com%2Fstatic%2Fimages%2Fwallpapers-7020-7277-hd-wallpapers.jpg
 server.get("/imgs/resize/", function(req, res, next) {
     var url = req.query.url;
     var width = req.query.width;
@@ -111,6 +113,32 @@ server.get("/imgs/resize/", function(req, res, next) {
                 next();
             })
             .pipe(resize)
+            .pipe(res);
+    } else {
+        res.json({
+            status: "fail"
+        });
+        next();
+    }
+});
+
+server.get("/imgs/proxy/", function(req, res, next) {
+    var url = req.query.url;
+
+    if (url) {
+
+        request.get(url)
+            .on('response', function(response) {
+                console.log('response', response.statusCode) // 200
+                console.log('headers', response.headers['content-type']) // 'image/png'
+            })
+            .on('error', function(err) {
+                console.log(err)
+                res.json({
+                    status: err
+                });
+                next();
+            })
             .pipe(res);
     } else {
         res.json({
