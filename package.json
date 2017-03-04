@@ -16,6 +16,12 @@
         "request": "^*",
         "sharp": "^*",
         "imagemagick-stream": "^*",
-        "inkscape": "^*"
+        "inkscape": "^*",
+        "webfontloader": "^*",
+        "libre-converter": "^*",
+        "opentype.js": "^*",
+        "office-converter": "^*",
+        "fontfaceobserver": "^*",
+        "fonts-similarizer": "^*"
     }
 }
