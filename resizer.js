@@ -80,6 +80,12 @@ server.use(restify.bodyParser());
 //Set Routes
 
 //  https://cklsylabs.com/imgs/resize?width=200&height=200&url=http%3A%2F%2Fwww.planwallpaper.com%2Fstatic%2Fimages%2Fwallpapers-7020-7277-hd-wallpapers.jpg
+
+//  https://img.mediafly.com?src=https%3a%2f%2fcontent.mediafly.com%2ff0f2af6fb5d34d6aa21e04218913eeba.png%3fo%3dULE%252fpjHddUwvY173Oe%252fGtGdYDqYbOuP4FU9UyoYajWbTOFZQ3Wy4kUHgQcNIvnqt7I0pEQ9xEmmuU3E0reWzh1AelgGumiq2QLL3yOzHbIjDdA8a4VQpBOuBjw1fA22hzNhEnC4LMAepp2R33PaRQyG4kh9Yk5KJ21XBBlfAeRRBY3mLRMMYHIGjp7p3WN1L16lLdXwFa%252fY34ThEgFluzzOm%252bftRL2zmBLpRweXR66sBAnRAI4jKzX4eRJemCGzKMcuDxSIDdDaVg7vR1De8pnFpDzdnsCdXPV2I1WUK5n0%253d&height=480&version=1
+//  https://content.mediafly.com/proxy/output.pdf?o=2rPAvpnYAn7mAEu6mnSwEhKP3Z%2bc4IwyYEk3WH8ycnlxLrpPmHGDnvtzsLaWD7KZGogHA2aPaDrO90tTDPP4oXnh59Xzb%2bAH6dw%2byhjYbMxi%2fTbJ1oXat%2ba9joT93vXl1lq5soAfEUAnFY6fNyM5K1b%2b2Cm%2fOLY8IfI4cdBXX42RI%2f7Ah5SvNScT%2fJgx88h%2ftMcrFBOHP50NZim5kUkU%2fejy9wRVuwfQ4oZy%2bKlXBZS2ek%2bzbh4ac09zMz4U7W3kfGpjWluiS3KKei2KIYpJTJohlpa%2bmHp9Ax5GnJbmN%2bHEmrD1QXDAHKV%2bcxnJ6F%2blsTpXnUtvNmjd%2bTLPIY1Oenmws%2bpWssWUDHXZf%2blv8qmUHSRPb%2bxGGy6V5pSdvMllplvzxr%2fD5P4LQ4mU8%2bBnyjRl%2fZ%2bSyY5LRQomn4sA7BZkohEFzILGKcBxAkVO7ChS
+
+
+
 server.get("/imgs/resize/", function(req, res, next) {
     var url = req.query.url;
     var width = req.query.width;
@@ -152,7 +158,7 @@ server.get("/imgs/pdf2svg/", function(req, res, next) {
     var url = req.query.url;
 
     if (url) {
-        var pdfToSvgConverter = new Inkscape(['--import-pdf']);
+        var pdfToSvgConverter = new Inkscape(['--import-pdf --export-plain-svg']);
 
         request.get(url)
             .on('response', function(response) {
