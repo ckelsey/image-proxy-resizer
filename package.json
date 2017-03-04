@@ -1,0 +1,21 @@
+{
+    "name": "image-proxy-resize",
+    "version": "1.0.0",
+    "description": "",
+    "main": "resizer.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ckelsey/image-proxy-resizer"
+    },
+    "keywords": [],
+    "author": "Chris Kelsey",
+    "license": "ISC",
+    "dependencies": {
+        "pm2": "^*",
+        "restify": "^*",
+        "request": "^*",
+        "sharp": "^*",
+        "imagemagick-stream": "^*",
+        "inkscape": "^*"
+    }
+}
